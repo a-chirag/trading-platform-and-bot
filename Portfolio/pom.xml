@@ -80,14 +80,4 @@
 			<version>2.7.0</version>
 		</dependency>
 	</dependencies>
-	<repositories>
-		<repository>
-			<id>thirdparty</id>
-			<url>http://nexus.bnymellon.net/nexus/content/repositories/thirdparty</url>
-		</repository>
-		<repository>
-			<id>central</id>
-			<url>http://nexus.bnymellon.net/nexus/content/repositories/central</url>
-		</repository>
-	</repositories>
 </project>
