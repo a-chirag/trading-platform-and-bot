@@ -1,0 +1,627 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api Documentation",
+    "version": "1.0",
+    "title": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/book/v1",
+  "tags": [
+    {
+      "name": "rest-controller",
+      "description": "Rest Controller"
+    }
+  ],
+  "paths": {
+    "/orderbooks": {
+      "get": {
+        "description": "To get all the orderbooks present",
+        "tags": [
+          "rest-controller"
+        ],
+        "summary": "To get all the order books present",
+        "operationId": "listOfOrderBookUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OrderBook"
+            }
+          },
+          "400": {
+            "description": "Not Loggedin"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Invalid Data"
+          }
+        }
+      },
+      "put": {
+        "description": "To change the orderbooks present",
+        "tags": [
+          "rest-controller"
+        ],
+        "summary": "Change the order books present",
+        "operationId": "changeOrderBookUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OrderBook"
+            }
+          },
+          "400": {
+            "description": "Not Loggedin"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Invalid Data"
+          }
+        }
+      },
+      "post": {
+        "description": "To create a new market",
+        "tags": [
+          "rest-controller"
+        ],
+        "summary": "Create a new market",
+        "operationId": "putOrderBookUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "book",
+            "description": "book",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderBook"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OrderBook"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Not Loggedin"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Invalid Data"
+          }
+        }
+      }
+    },
+    "/orderbooks/{instrument}": {
+      "get": {
+        "description": "To get a particular the orderbook",
+        "tags": [
+          "rest-controller"
+        ],
+        "summary": "Get a orderbook of a particular market",
+        "operationId": "getOrderBookUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "instrument",
+            "in": "path",
+            "description": "Name of the instrument",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OrderBook"
+            }
+          },
+          "400": {
+            "description": "Not Loggedin"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Invalid Data"
+          }
+        }
+      }
+    },
+    "/orderbooks/{instrument}/prices": {
+      "get": {
+        "description": "To get previous prices of a particular orderbook",
+        "tags": [
+          "rest-controller"
+        ],
+        "summary": "Get prices of market",
+        "operationId": "getOrderBookPriceUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "instrument",
+            "in": "path",
+            "description": "Name of the instrument",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Wrapper"
+            }
+          },
+          "400": {
+            "description": "Not Loggedin"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Invalid Data"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "description": "To get all the users registered",
+        "tags": [
+          "rest-controller"
+        ],
+        "summary": "Get all the registered users",
+        "operationId": "listOfAllUsersUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Wrapper"
+            }
+          },
+          "400": {
+            "description": "Not Loggedin"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Invalid Data"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "description": "To get data of a particular user",
+        "tags": [
+          "rest-controller"
+        ],
+        "summary": "Get data of a user with user id",
+        "operationId": "getUserUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the user",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Wrapper"
+            }
+          },
+          "400": {
+            "description": "Not Loggedin"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Invalid Data"
+          }
+        }
+      }
+    },
+    "/users/{id}/orders": {
+      "get": {
+        "description": "To get all pending orders of the user",
+        "tags": [
+          "rest-controller"
+        ],
+        "summary": "Get pending orders of user",
+        "operationId": "ordersUserUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the user",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Wrapper"
+            }
+          },
+          "400": {
+            "description": "Not Loggedin"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Invalid Data"
+          }
+        }
+      },
+      "post": {
+        "description": "To place an order in the orderbook",
+        "tags": [
+          "rest-controller"
+        ],
+        "summary": "Place an order for the user",
+        "operationId": "addOrderUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "bean",
+            "description": "bean",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FormOrderBean"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the user",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Wrapper"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Not Loggedin"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Invalid Data"
+          }
+        }
+      }
+    },
+    "/users/{id}/orders/{oid}": {
+      "delete": {
+        "description": "To cancel an order with a given order Id",
+        "tags": [
+          "rest-controller"
+        ],
+        "summary": "Delete an order",
+        "operationId": "deleteOrderUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "description": "Id of the order",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the user",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Wrapper"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Not Loggedin"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Invalid Data"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "FormOrderBean": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "$ref": "#/definitions/Order"
+        },
+        "side": {
+          "type": "string",
+          "description": "Buy or Sell"
+        },
+        "instrument": {
+          "type": "string",
+          "description": "Market name"
+        },
+        "size": {
+          "type": "number",
+          "format": "double",
+          "description": "Size of order"
+        },
+        "price": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Price for buy/sell"
+        }
+      }
+    },
+    "Order": {
+      "type": "object",
+      "properties": {
+        "instrument": {
+          "type": "string",
+          "description": "Market name"
+        },
+        "orderId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Order Id"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "description": "Price for buy/sell"
+        },
+        "side": {
+          "type": "string",
+          "description": "Buy or Sell"
+        },
+        "size": {
+          "type": "number",
+          "format": "double",
+          "description": "Size of order"
+        }
+      }
+    },
+    "OrderBook": {
+      "type": "object",
+      "properties": {
+        "buy": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/PriceLevel"
+          },
+          "description": "Buy side Levels"
+        },
+        "instrument": {
+          "type": "string",
+          "description": "Name of the instrument"
+        },
+        "prices": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "double"
+          },
+          "description": "Last Executed Prices"
+        },
+        "sell": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/PriceLevel"
+          },
+          "description": "Sell side levels"
+        },
+        "desc": {
+          "type": "string",
+          "description": "Description of the market"
+        },
+        "endDate": {
+          "type": "string",
+          "example": "dd/MM/yyyy",
+          "description": "The date of declartion"
+        }
+      }
+    },
+    "PriceLevel": {
+      "type": "object",
+      "properties": {
+        "empty": {
+          "type": "boolean",
+          "description": "Is the price level empty"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "description": "Price of the Level"
+        },
+        "side": {
+          "type": "string",
+          "enum": [
+            "BUY",
+            "SELL"
+          ],
+          "description": "Buy or Sell"
+        },
+        "size": {
+          "type": "number",
+          "format": "double",
+          "description": "Total size of the order present in this level"
+        }
+      }
+    },
+    "Wrapper": {
+      "type": "object",
+      "description": "Object that is returned"
+    }
+  }
+}
